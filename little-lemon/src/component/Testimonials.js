@@ -1,4 +1,4 @@
-function Nav(){
+function Testimonials(){
     return(
         <>
         
@@ -6,4 +6,4 @@ function Nav(){
     )
 }
 
-export default Nav;
+export default Testimonials;
