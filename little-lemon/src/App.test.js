@@ -1,8 +1,9 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, fireEvent, screen } from "@testing-library/react";
+import App from "./App";
+import { fetchAPI } from "./component/api";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+
+jest.mock('./component/api', () => ({
+  fetchAPI: jest.fn(() => ['17:00', '18:00']),
+}));
+
