@@ -1,82 +1,115 @@
-import React, { useState } from "react";
+// src/component/BookingForm.js
+import React, { useState } from 'react';
 
-const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
+function BookingForm() {
   const [formData, setFormData] = useState({
-    date: "",
-    time: "",
-    guests: 1,
-    occasion: "Birthday",
+    date: '',
+    time: '',
+    guests: '',
+    occasion: '',
   });
+
+  const [errors, setErrors] = useState({});
+  const [isValid, setIsValid] = useState(false);
+
+  const validate = (fieldValues = formData) => {
+    const temp = { ...errors };
+
+    if ('date' in fieldValues)
+      temp.date = fieldValues.date ? '' : 'Date is required.';
+
+    if ('time' in fieldValues)
+      temp.time = fieldValues.time ? '' : 'Time is required.';
+
+    if ('guests' in fieldValues) {
+      const value = parseInt(fieldValues.guests, 10);
+      if (!value) temp.guests = 'Number of guests is required.';
+      else if (value < 1 || value > 10)
+        temp.guests = 'Guests must be between 1 and 10.';
+      else temp.guests = '';
+    }
+
+    if ('occasion' in fieldValues)
+      temp.occasion = fieldValues.occasion ? '' : 'Occasion is required.';
+
+    setErrors({ ...temp });
+    setIsValid(Object.values(temp).every((x) => x === ''));
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-
-    if (name === "date") {
-      dispatch(value); // update available times when date changes
-    }
+    const newFormData = { ...formData, [name]: value };
+    setFormData(newFormData);
+    validate({ [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    submitForm(formData);
+    validate();
+    if (isValid) {
+      alert('Form submitted successfully!');
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="date">Choose date</label>
+    <form onSubmit={handleSubmit} noValidate>
+      <label htmlFor="res-date">Choose date</label>
       <input
         type="date"
-        id="date"
+        id="res-date"
         name="date"
+        required
         value={formData.date}
         onChange={handleChange}
-        required
       />
+      <div>{errors.date}</div>
 
-      <label htmlFor="time">Choose time</label>
+      <label htmlFor="res-time">Choose time</label>
       <select
-        id="time"
+        id="res-time"
         name="time"
+        required
         value={formData.time}
         onChange={handleChange}
-        required
       >
-        <option value="">Select a time</option>
-        {availableTimes?.length > 0 &&
-          availableTimes.map((time) => (
-            <option key={time} value={time}>
-              {time}
-            </option>
-          ))}
+        <option value="">Select time</option>
+        <option value="17:00">17:00</option>
+        <option value="18:00">18:00</option>
       </select>
+      <div>{errors.time}</div>
 
       <label htmlFor="guests">Number of guests</label>
       <input
         type="number"
         id="guests"
         name="guests"
+        required
         min="1"
         max="10"
         value={formData.guests}
         onChange={handleChange}
-        required
       />
+      <div>{errors.guests}</div>
 
       <label htmlFor="occasion">Occasion</label>
       <select
         id="occasion"
         name="occasion"
+        required
         value={formData.occasion}
         onChange={handleChange}
       >
-        <option>Birthday</option>
-        <option>Anniversary</option>
+        <option value="">Select occasion</option>
+        <option value="Birthday">Birthday</option>
+        <option value="Anniversary">Anniversary</option>
       </select>
+      <div>{errors.occasion}</div>
 
-      <button type="submit">Make Your Reservation</button>
+      <button type="submit" disabled={!isValid}>
+        Submit
+      </button>
     </form>
   );
-};
+}
 
 export default BookingForm;
