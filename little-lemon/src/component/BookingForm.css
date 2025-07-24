@@ -1,0 +1,62 @@
+/* BookingForm.css */
+form {
+  background-color: #fff;
+  padding: 2.5rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+
+input[type="date"],
+input[type="number"],
+select {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #f4ce14; /* Little Lemon yellow */
+  outline: none;
+}
+
+div {
+  font-size: 0.875rem;
+  color: red;
+  min-height: 1em;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  background-color: #f4ce14;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #e4be0f;
+}

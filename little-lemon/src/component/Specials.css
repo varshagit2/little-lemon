@@ -1,0 +1,91 @@
+.specials {
+  padding: 2rem;
+  background-color: #edefee;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.specials-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.specials-header h2 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.specials-header button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background-color: #f45314;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.specials-header button:hover {
+  background-color: #e0ba00;
+}
+
+.specials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.special-card {
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s;
+}
+
+.special-card:hover {
+  transform: translateY(-5px);
+}
+
+.special-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.price {
+  color: #f47114 !important;
+}
+
+.special-card p {
+  padding: 0 1rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.special-card a {
+  padding: 1rem;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  display: inline-block;
+  transition: color 0.3s;
+}
+
+.special-card a:hover {
+  color: #495e57;
+}

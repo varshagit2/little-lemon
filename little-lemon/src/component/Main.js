@@ -3,6 +3,7 @@ import React, { useReducer } from "react";
 import BookingForm from "./BookingForm";
 import { submitAPI } from './api';
 import { fetchAPI } from './api';
+import './Main.css';
 
 
 
@@ -23,8 +24,16 @@ const Main = () => {
 
   return (
     <main>
-      <BookingForm availableTimes={availableTimes} dispatch={dispatch} submitForm={submitForm} />
-    </main>
+  <div className="booking-container">
+    <h2>Book Your Table</h2>
+    <BookingForm
+      availableTimes={availableTimes}
+      dispatch={dispatch}
+      submitForm={submitForm}
+    />
+  </div>
+</main>
+
   );
 };
 

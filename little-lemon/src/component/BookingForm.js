@@ -1,7 +1,10 @@
 // src/component/BookingForm.js
 import React, { useState } from 'react';
+import './BookingForm.css';
+import { useNavigate } from 'react-router';
 
 function BookingForm() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     date: '',
     time: '',
@@ -48,6 +51,7 @@ function BookingForm() {
     validate();
     if (isValid) {
       alert('Form submitted successfully!');
+      navigate('/confirmed')
     }
   };
 
@@ -59,6 +63,10 @@ function BookingForm() {
         id="res-date"
         name="date"
         required
+        aria-required="true"
+        aria-label="Reservation date"
+        aria-invalid={!!errors.date}
+        aria-describedby="date-error"
         value={formData.date}
         onChange={handleChange}
       />
@@ -69,6 +77,10 @@ function BookingForm() {
         id="res-time"
         name="time"
         required
+        aria-required="true"
+        aria-label="Reservation time"
+        aria-invalid={!!errors.time}
+        aria-describedby="time-error"
         value={formData.time}
         onChange={handleChange}
       >
@@ -84,6 +96,10 @@ function BookingForm() {
         id="guests"
         name="guests"
         required
+        aria-required="true"
+        aria-label="Number of guests"
+        aria-invalid={!!errors.guests}
+        aria-describedby="guests-error"
         min="1"
         max="10"
         value={formData.guests}
@@ -96,6 +112,10 @@ function BookingForm() {
         id="occasion"
         name="occasion"
         required
+        aria-required="true"
+        aria-label="Occasion"
+        aria-invalid={!!errors.occasion}
+        aria-describedby="occasion-error"
         value={formData.occasion}
         onChange={handleChange}
       >
@@ -105,7 +125,7 @@ function BookingForm() {
       </select>
       <div>{errors.occasion}</div>
 
-      <button type="submit" disabled={!isValid}>
+      <button type="submit" aria-label="Submit form" disabled={!isValid}>
         Submit
       </button>
     </form>

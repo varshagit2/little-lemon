@@ -1,0 +1,24 @@
+/* ConfirmedBooking.css */
+.confirmation-container {
+  text-align: center;
+  margin-top: 80px;
+  padding: 30px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 120px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.confirmation-container h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.confirmation-container p {
+  font-size: 1.2rem;
+  color: #666;
+}

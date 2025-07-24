@@ -1,0 +1,22 @@
+.about-section {
+  padding: 4rem 1rem;
+  background-color: #fffbe6; /* Soft lemon background */
+  text-align: left;
+}
+
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.about-container p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
